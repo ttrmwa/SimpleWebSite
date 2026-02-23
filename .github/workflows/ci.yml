@@ -7,15 +7,15 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
+  validate:
     runs-on: ubuntu-latest
 
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Show project fies
-      run: ls -la
+    - name: Install HTML validator
+      run: npm install -g html-validator
 
-    - name: Say hello 
-      run: echo "Pipeline is working!"
+    - name: Validate HTML files
+      run:  html-validate index.html
